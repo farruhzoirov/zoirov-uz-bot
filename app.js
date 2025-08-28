@@ -34,27 +34,23 @@ app.get("/api/test", async (req, res) => {
 app.post("/api/contact", async (req, res) => {
   try {
     if (
-      !["http://localhost:3000", "https://sultonbayev.uz"].includes(
+      !["http://localhost:3000", "https://farruhzoir.uz"].includes(
         req.headers.origin
       )
     ) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: `Ruxsat berilmagan manzildan kelgan so'rov`,
-        });
+      return res.status(400).json({
+        success: false,
+        message: `Ruxsat berilmagan manzildan kelgan so'rov`,
+      });
     }
 
     const { name, email, tgOrPhone, message } = req.body;
 
     if (!name || !tgOrPhone) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Ism yoki telefon/telegram kiritilmagan!",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Ism yoki telefon/telegram kiritilmagan!",
+      });
     }
 
     const messageText = `🔔 Yangi xabar! \n\n👤 Ism: ${name}\n📱 Telegram/Telefon: ${
